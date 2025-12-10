@@ -1,65 +1,60 @@
-// package filehandling;
+import java.io.*;
+import java.util.List;
 
-// import employees.Employee;
-// import java.io.*;
-// import java.util.List;
-
-// public class EmployeeFileHandler implements Runnable {
+public class EmployeeFileHandler implements Runnable {
     
-//     private List<Employee> employees;
-//     private String filename;
-//     private boolean isWriting;
+    private List<Employee> employees;
+    private String filename;
+    private boolean writing;
 
-//     public EmployeeFileHandler(List<Employee> employees, String filename, boolean isWriting) {
-//         this.employees = employees;
-//         this.filename = filename;
-//         this.isWriting = isWriting;
-//     }
+    public EmployeeFileHandler(List<Employee> employees, String filename, boolean writing) {
+        this.employees = employees;
+        this.filename = filename;
+        this.writing = writing;
+    }
 
-//     @Override
-//     public void run() {
-//         if (isWriting) {
-//             saveFile();
-//         } else {
-//             readFile();
-//         }
-//     }
+    public void run() {
+        if (writing) {
+            savingFile();
+        } else {
+            loadingFile();
+        }
+    }
 
-//     // Save to the file
-//     private void saveFile() {
-//         try {
-//             FileWriter file = new FileWriter(filename);
+    private void savingFile() {
+        try {
+            FileWriter file = new FileWriter(filename);
             
-//             for (Employee emp : employees) {
-//                 file.write(emp.toString() + "\n");
-//             }
+            for (Employee emp : employees) {
+                String data = emp.getEmployeeID() + "," + emp.getFirstName() + " " + 
+             emp.getLastName() + "," + emp.getPositionName();
+                file.write(data + "\n");
+            }
             
-//             file.close();
-//             System.out.println("✓ Saved: " + filename);
+            file.close();
+            System.out.println("Saved to " + filename);
             
-//         } catch (IOException e) {
-//             System.err.println("Error saving file: " + e.getMessage());
-//         }
-//     }
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 
-//     // Read from the file
-//     private void readFile() {
-//         try {
-//             BufferedReader reader = new BufferedReader(new FileReader(filename));
+    private void loadingFile() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filename));
             
-//             System.out.println("\n--- Reading: " + filename + " ---");
-//             String line;
-//             while ((line = reader.readLine()) != null) {
-//                 System.out.println(line);
-//             }
-//             System.out.println("--- End ---\n");
+            System.out.println("\nReading " + filename + ":");
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
             
-//             reader.close();
+            reader.close();
             
-//         } catch (FileNotFoundException e) {
-//             System.err.println("File not found: " + filename);
-//         } catch (IOException e) {
-//             System.err.println("Error reading file: " + e.getMessage());
-//         }
-//     }
-// }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}

@@ -17,7 +17,7 @@ public class InvalidEmployeeIdException extends Exception {
             System.out.println("✓ Employee ID is valid: " + employeeID);
             
         } catch (InvalidEmployeeIdException e) {
-            System.err.println("❌ Error: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
     }
 }

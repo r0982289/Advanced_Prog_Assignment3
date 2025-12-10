@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import exceptions.*;
 
 public class InstructorEmployee extends Employee {
 
@@ -11,12 +12,28 @@ public class InstructorEmployee extends Employee {
             String employeeID, Position position, Manager manager,
             EmploymentType emplType, String specialization) {
         super(firstName, lastName, dateOfBirth, employeeID, position, manager, emplType);
-        this.specialization = specialization;
+        
+        try {
+            if (specialization == null || specialization.trim().isEmpty()) {
+                throw new InvalidExceptions("Specialization cannot be empty");
+            }
+            this.specialization = specialization;
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
+            this.specialization = "General";
+        }
     }
 
     public void addCourse(String course) {
-        if (course != null && !course.isEmpty()) {
+        try {
+            if (course == null || course.trim().isEmpty()) {
+                throw new InvalidExceptions("Course name cannot be empty");
+            }
             coursesTaught.add(course);
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
         }
     }
 
@@ -29,6 +46,14 @@ public class InstructorEmployee extends Employee {
     }
 
     public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+        try {
+            if (specialization == null || specialization.trim().isEmpty()) {
+                throw new InvalidExceptions("Specialization cannot be empty");
+            }
+            this.specialization = specialization;
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
 }

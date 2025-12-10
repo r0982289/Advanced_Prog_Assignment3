@@ -1,0 +1,5 @@
+MGR001,Alice Johnson,Team Manager
+EMP001,Bob Smith,Payroll Specialist
+EMP002,Carol Davis,Senior Instructor
+EMP003,David Wilson,IT Support
+EMP004,Eva Brown,Office Administrator

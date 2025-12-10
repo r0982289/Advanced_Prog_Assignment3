@@ -1,15 +1,29 @@
+import exceptions.*;
+
 public class Position {
 
-    private String PositionName;
+    private String positionName;
     private Department department;
 
     public Position(String positionName, Department department) {
-        this.PositionName = positionName;
-        this.department = department;
+        try {
+            if (positionName == null || positionName.trim().isEmpty()) {
+                throw new InvalidExceptions("Position name cannot be empty");
+            }
+            if (department == null) {
+                throw new InvalidExceptions("Department cannot be null");
+            }
+            
+            this.positionName = positionName;
+            this.department = department;
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
 
     public String getPositionName() {
-        return PositionName;
+        return positionName;
     }
 
     public Department getDepartment() {
@@ -17,11 +31,26 @@ public class Position {
     }
 
     public void setDepartment(Department department) {
-        this.department = department;
+        try {
+            if (department == null) {
+                throw new InvalidExceptions("Department cannot be null");
+            }
+            this.department = department;
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
 
     public void setPositionName(String positionName) {
-        this.PositionName = positionName;
+        try {
+            if (positionName == null || positionName.trim().isEmpty()) {
+                throw new InvalidExceptions("Position name cannot be empty");
+            }
+            this.positionName = positionName;
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
-
 }

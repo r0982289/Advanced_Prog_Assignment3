@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import exceptions.*;
 
 public class Manager extends Employee {
 
@@ -11,28 +12,36 @@ public class Manager extends Employee {
             EmploymentType emplType) {
 
         super(firstName, lastName, dateOfBirth, employeeID, position, manager, emplType);
-
     }
 
     public void addTeamMember(Employee employee) {
-        if (employee == null) {
-            throw new IllegalArgumentException("please provide a valid employee.");
+        try {
+            if (employee == null) {
+                throw new InvalidExceptions("Cannot add null employee to team");
+            }
+            
+            teamMembers.add(employee);
+            employee.setManager(this);
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
         }
-
-        teamMembers.add(employee);
-
-        // assigning this manager to the employee
-        employee.setManager(this);
     }
 
     public void removeTeamMember(Employee employee) {
-
-        // remove manager reference
-        if (employee.getManager() == this) {
-            employee.setManager(null);
+        try {
+            if (employee == null) {
+                throw new InvalidExceptions("Cannot remove null employee");
+            }
+            
+            if (employee.getManager() == this) {
+                employee.setManager(null);
+            }
+            teamMembers.remove(employee);
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
         }
-        teamMembers.remove(employee);
-
     }
 
     public List<Employee> getTeamMembers() {
@@ -40,14 +49,35 @@ public class Manager extends Employee {
     }
 
     public void receiveReport(Employee employee, String reportMessage) {
-        System.out.println("Manager " + getFirstName() + getLastName() +
-                " received report from " + employee.getFirstName() + employee.getLastName() +
-                ": " + reportMessage);
+        try {
+            if (employee == null) {
+                throw new InvalidExceptions("Employee cannot be null");
+            }
+            if (reportMessage == null || reportMessage.trim().isEmpty()) {
+                throw new InvalidExceptions("Report message cannot be empty");
+            }
+            
+            System.out.println("Manager " + getFirstName() + " " + getLastName() +
+                    " received report from " + employee.getFirstName() + " " + employee.getLastName() +
+                    ": " + reportMessage);
+                    
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
 
     public void conductPerformanceReview(Employee employee) {
-        System.out.println("Manager " + getFirstName() + getLastName() +
-                " is conducting a performance review for " +
-                employee.getFirstName() + employee.getLastName() + ".");
+        try {
+            if (employee == null) {
+                throw new InvalidExceptions("Cannot review null employee");
+            }
+            
+            System.out.println("Manager " + getFirstName() + " " + getLastName() +
+                    " is conducting a performance review for " +
+                    employee.getFirstName() + " " + employee.getLastName() + ".");
+                    
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
 }

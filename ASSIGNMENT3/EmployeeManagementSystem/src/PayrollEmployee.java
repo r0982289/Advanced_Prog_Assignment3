@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import exceptions.*;
 
 public class PayrollEmployee extends Employee {
 
@@ -13,19 +14,36 @@ public class PayrollEmployee extends Employee {
     }
 
     public void processPayroll() {
-        System.out.println("Processing payroll for all employees.");
+        try {
+            System.out.println("Processing payroll for all employees.");
+            
+        } catch (Exception e) {
+            System.err.println("Error processing payroll: " + e.getMessage());
+        }
     }
 
     public int getEmployeesManaged() {
-        if (getManager() != null && getManager().getTeamMembers() != null) {
-            return getManager().getTeamMembers().size();
+        try {
+            if (getManager() != null && getManager().getTeamMembers() != null) {
+                return getManager().getTeamMembers().size();
+            }
+            return 0;
+            
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+            return 0;
         }
-        return 0;
     }
 
     public void addCertification(String cert) {
-        if (cert != null && !cert.isEmpty()) {
+        try {
+            if (cert == null || cert.trim().isEmpty()) {
+                throw new InvalidExceptions("Certification cannot be empty");
+            }
             certifications.add(cert);
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
         }
     }
 

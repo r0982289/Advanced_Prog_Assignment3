@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import exceptions.*;
 
 public class ITEmployee extends Employee {
 
@@ -13,8 +14,14 @@ public class ITEmployee extends Employee {
     }
 
     public void addTechnicalSkill(String skill) {
-        if (skill != null && !skill.isEmpty()) {
+        try {
+            if (skill == null || skill.trim().isEmpty()) {
+                throw new InvalidExceptions("Technical skill cannot be empty");
+            }
             technicalSkills.add(skill);
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
         }
     }
 

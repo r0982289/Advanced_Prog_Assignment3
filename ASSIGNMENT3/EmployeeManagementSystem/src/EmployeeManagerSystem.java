@@ -2,46 +2,81 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.InvalidEmployeeIdException;
+import exceptions.InvalidExceptions;
+
 public class EmployeeManagerSystem {
 
     private List<Employee> employees = new ArrayList<>();
 
-    public void addEmployee(Employee employee) {
-        if (employee == null) {
-            throw new IllegalArgumentException("please provide a valid employee.");
+      public void addEmployee(Employee employee) {
+        try {
+            if (employee == null) {
+                throw new InvalidExceptions("Cannot add null employee");
+            }
+            employees.add(employee);
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
         }
-        employees.add(employee);
     }
 
     public void removeEmployee(String id) {
-        employees.removeIf(emp -> emp.getEmployeeID().equals(id));
+        try {
+            if (id == null || id.trim().isEmpty()) {
+                throw new InvalidEmployeeIdException("Employee ID cannot be empty");
+            }
+            employees.removeIf(emp -> emp.getEmployeeID().equals(id));
+            
+        } catch (InvalidEmployeeIdException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
     }
 
     public Employee findEmployee(String id) {
-        for (Employee emp : employees) {
-            if (emp.getEmployeeID().equals(id)) {
-                return emp;
+        try {
+            if (id == null || id.trim().isEmpty()) {
+                throw new InvalidEmployeeIdException("Employee ID cannot be empty");
             }
+            
+            for (Employee emp : employees) {
+                if (emp.getEmployeeID().equals(id)) {
+                    return emp;
+                }
+            }
+            return null;
+            
+        } catch (InvalidEmployeeIdException e) {
+            System.err.println("Error: " + e.getMessage());
+            return null;
         }
-        return null;
     }
 
     public List<Employee> getAllEmployees() {
         return new ArrayList<>(employees); // copy
     }
 
-    public void validateEmploymentType(Employee employee) {
-        EmploymentType type = employee.getEmplType();
+        public void validateEmploymentType(Employee employee) {
+        try {
+            if (employee == null) {
+                throw new InvalidExceptions("Employee cannot be null");
+            }
+            
+            EmploymentType type = employee.getEmplType();
 
-        if (type == null) {
-            throw new IllegalStateException(
-                    "Employee " + employee.getEmployeeID() + " does not have an employment type.");
-        }
+            if (type == null) {
+                throw new InvalidExceptions(
+                        "Employee " + employee.getEmployeeID() + " does not have an employment type.");
+            }
 
-        if (!(type instanceof FulltimeEmployment || type instanceof ParttimeEmployment)) {
-            throw new IllegalStateException(
-                    "Employee " + employee.getEmployeeID() +
-                            " has an invalid employment type. Must be Full-Time or Part-Time.");
+            if (!(type instanceof FulltimeEmployment || type instanceof ParttimeEmployment)) {
+                throw new InvalidExceptions(
+                        "Employee " + employee.getEmployeeID() +
+                                " has an invalid employment type. Must be Full-Time or Part-Time.");
+            }
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
         }
     }
 

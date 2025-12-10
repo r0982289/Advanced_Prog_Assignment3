@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import exceptions.*;
 
 public class AdminEmployee extends Employee {
 
@@ -13,8 +14,14 @@ public class AdminEmployee extends Employee {
     }
 
     public void addResponsibility(String responsibility) {
-        if (responsibility != null && !responsibility.isEmpty()) {
+        try {
+            if (responsibility == null || responsibility.trim().isEmpty()) {
+                throw new InvalidExceptions("Responsibility cannot be empty");
+            }
             responsibilities.add(responsibility);
+            
+        } catch (InvalidExceptions e) {
+            System.err.println("Error: " + e.getMessage());
         }
     }
 
