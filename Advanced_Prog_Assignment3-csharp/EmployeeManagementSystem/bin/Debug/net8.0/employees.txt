@@ -1,0 +1,10 @@
+MGR001,Alice,Johnson,Team Manager,STAFF,5000
+EMP001,Bob,Smith,Payroll Specialist,PAYROLL,5000
+EMP002,Carol,Davis,Senior Instructor,STAFF,2400
+EMP003,David,Wilson,IT Support,IT,5000
+EMP004,Eva,Brown,Office Administrator,ADMINISTRATION,2400
+MGR001,Alice,Johnson,Team Manager,STAFF,5000
+EMP001,Bob,Smith,Payroll Specialist,PAYROLL,5000
+EMP002,Carol,Davis,Senior Instructor,STAFF,2400
+EMP003,David,Wilson,IT Support,IT,5000
+EMP004,Eva,Brown,Office Administrator,ADMINISTRATION,2400

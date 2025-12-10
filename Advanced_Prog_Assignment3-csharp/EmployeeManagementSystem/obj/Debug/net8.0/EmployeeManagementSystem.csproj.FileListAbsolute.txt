@@ -1,0 +1,14 @@
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\obj\Debug\net8.0\EmployeeManagementSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\obj\Debug\net8.0\EmployeeManagementSystem.AssemblyInfoInputs.cache
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\obj\Debug\net8.0\EmployeeManagementSystem.AssemblyInfo.cs
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\obj\Debug\net8.0\EmployeeManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\bin\Debug\net8.0\EmployeeManagementSystem.exe
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\bin\Debug\net8.0\EmployeeManagementSystem.deps.json
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\bin\Debug\net8.0\EmployeeManagementSystem.runtimeconfig.json
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\bin\Debug\net8.0\EmployeeManagementSystem.dll
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\bin\Debug\net8.0\EmployeeManagementSystem.pdb
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\obj\Debug\net8.0\EmployeeManagementSystem.dll
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\obj\Debug\net8.0\refint\EmployeeManagementSystem.dll
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\obj\Debug\net8.0\EmployeeManagementSystem.pdb
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\obj\Debug\net8.0\EmployeeManagementSystem.genruntimeconfig.cache
+C:\Users\trist\Downloads\Advanced_Prog_Assignment3-main\Advanced_Prog_Assignment3-csharp\EmployeeManagementSystem\obj\Debug\net8.0\ref\EmployeeManagementSystem.dll
